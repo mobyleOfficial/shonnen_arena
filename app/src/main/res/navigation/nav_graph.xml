@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/characterListFragment">
+
+    <fragment
+        android:id="@+id/characterListFragment"
+        android:name="com.example.shonenarena.presentation.characterlist.CharacterListFragment"
+        android:label="fragment_character_list"
+        tools:layout="@layout/fragment_character_list" >
+        <action
+            android:id="@+id/action_characterListFragment_to_matchFragment"
+            app:destination="@id/matchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/matchFragment"
+        android:name="com.example.shonenarena.presentation.match.MatchFragment"
+        android:label="fragment_match"
+        tools:layout="@layout/fragment_match" >
+        <action
+            android:id="@+id/action_matchFragment_to_characterInformationBottomSheet"
+            app:destination="@id/characterInformationBottomSheet"/>
+    </fragment>
+    <dialog
+        android:id="@+id/characterInformationBottomSheet"
+        android:name="com.example.shonenarena.presentation.characterinformation.CharacterInformationBottomSheet"
+        android:label="CharacterInformationBottomSheet" >
+        <argument
+            android:name="characterInformation"
+            app:argType="com.example.shonenarena.presentation.characterinformation.model.CharacterInformationArgs" />
+        <action
+            android:id="@+id/action_characterInformationBottomSheet_to_targetsDialog"
+            app:destination="@id/targetsDialog" />
+    </dialog>
+    <dialog
+        android:id="@+id/targetsDialog"
+        android:name="com.example.shonenarena.presentation.target.TargetsDialog"
+        android:label="TargetsDialog" >
+        <argument
+            android:name="characterInformation"
+            app:argType="com.example.shonenarena.presentation.target.model.TargetModelArgs" />
+    </dialog>
+</navigation>
